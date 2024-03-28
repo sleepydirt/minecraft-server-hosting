@@ -6,7 +6,7 @@ You can find the details on how to create your own OCI account and create a new 
 
 By default the VM should be empty so you'll need to install Java yourself. 
 ```
-yum list jdk
+$ yum list jdk
 $ sudo yum install (jdk version)
 ```
 Confirm that Java is installed successfully with ``` java --version ```
