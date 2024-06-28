@@ -1,15 +1,17 @@
-This is a short guide for myself (and anyone else) on how to host your own free Minecraft server with the help of Oracle Cloud Infrastructure (OCI).
+This is a short guide for myself (and anyone else) on how to host your own free Minecraft server with the help of Google Cloud Compute Engine.
 
-You can find the details on how to create your own OCI account and create a new VM instance on the Oracle website, just google it.
+Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM (since you have $100 free a month)
 
 # Install Java
 
-By default the VM should be empty so you'll need to install Java yourself. 
+By default the VM should be empty so you'll need to install Java yourself. For some reason Minecraft 1.21 requires JDK 20 or later, which is not available on apt, so you have to install via Azul.
+The great thing about Google Cloud is that you can connect via SSH with a single click from the browser. (no more losing your private keys)
+You can also upload and download files directly to/from your computer as well. (no need scp)
+Since we are running a Debian VM, install the .deb file JDK on your own computer from https://www.azul.com/core-post-download/ and upload it onto the VM.
 ```
-$ yum list jdk
-$ sudo yum install (jdk version)
+$ sudo apt install ./(.deb file name)
 ```
-Confirm that Java is installed successfully with ``` java --version ```
+Confirm that Java is installed successfully with ``` java -version ```
 
 # Install the Minecraft Server .jar file
 
