@@ -50,6 +50,22 @@ $ scp -r /world oci@192.168.0.1:/directory
 ```
 Using the ``` -r ``` argument will cause the command to recursively copy the entire directory and all its files into your VM. Note that your ip address is specific to your VM and directory represents the target directory that your world folder is located in. Enter your password and the transfer should begin. 
 
+#Keeping your server running 24/7
+
+Your server will most likely stop once you close the Terminal window. To keep your server running 24/7, we can use ``` Screen ```.
+
+First, create a new Screen named Minecraft and run your server.jar file within it.
+
+``` 
+$ screen -mdS minecraft java -Xms2G -Xmx2G -jar server.jar
+```
+
+To detach from your screen, press ```Ctrl+A``` + ```D```, and to reopen your screen do
+
+```
+$ screen -x minecraft
+```
+
 # Running a Modded Server on the VM
 The features that OCI provides for free is overkill for a simple vanilla Minecraft server. As such, you may want to have mods in your multiplayer server.
 
