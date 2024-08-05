@@ -12,7 +12,8 @@ You can also upload and download files directly to/from your computer as well. (
 
 Since we are running a Debian VM, install the .deb file JDK on your own computer from https://www.azul.com/core-post-download/ and upload it onto the VM.
 ```
-$ sudo apt install ./(.deb file name)
+$ wget https://www.azul.com/core-post-download/?endpoint=zulu&uuid=189be6cc-5ad5-4926-97ca-470b401f151c
+$ sudo apt install ./zulu22.32.15-ca-jdk22.0.2-linux_amd64.deb
 ```
 Confirm that Java is installed successfully with ``` java -version ```
 
@@ -20,7 +21,7 @@ Confirm that Java is installed successfully with ``` java -version ```
 
 You can find the server.jar file online, copy the link and download it into the VM, it should look something like:
 ```
-$ wget https://launcher.mojang.com/v1/objects/abcdefgh
+$ wget https://piston-data.mojang.com/v1/objects/450698d1863ab5180c25d7c804ef0fe6369dd1ba/server.jar
 ```
 
 After the install, you can try running the server
@@ -67,13 +68,15 @@ $ screen -x minecraft
 ```
 
 # Running a Modded Server on the VM
-The features that OCI provides for free is overkill for a simple vanilla Minecraft server. As such, you may want to have mods in your multiplayer server.
+The features that GCP provides for free is overkill for a simple vanilla Minecraft server. As such, you may want to have mods in your multiplayer server.
 
 Using either a fabric/forge .jar launcher, upload the server jar file into your VM with the same method mentioned above. Run the server once such that the ``` mods ``` folder is generated.
 
 Upload whatever .jar files your mod(s) require into the ``` mods ``` folder onto your VM.
 
+You can also use pre-configured server packs from ```CurseForge``` that will be much easier to set up at the cost of some customisability.
+
 # Copying your Minecraft world from the VM
 After you had enough fun playing multiplayer, you can continue your progress on your local machine by copying the ``` world ``` folder back onto your local machine.
 
-Navigate to your ``` .minecraft\saves\ ``` folder and copy the folder path. Copy your files using ``` scp ``` and continue playing on singleplayer!
+Navigate to your ``` .minecraft\saves\ ``` folder and copy the folder path. Copy your files using ``` scp ``` and continue playing on singleplayer.
