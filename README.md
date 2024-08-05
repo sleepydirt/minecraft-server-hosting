@@ -46,7 +46,7 @@ $ rm world
 Locate your Minecraft ``` world ``` folder on your local machine and take note of its file path. 
 Upload your ``` world ``` folder onto your VM via the command line:
 ```
-$ scp -r /world oci@192.168.0.1:/directory
+$ scp -r /world root@xx.xx.xx.x:/directory
 ```
 Using the ``` -r ``` argument will cause the command to recursively copy the entire directory and all its files into your VM. Note that your ip address is specific to your VM and directory represents the target directory that your world folder is located in. Enter your password and the transfer should begin. 
 
