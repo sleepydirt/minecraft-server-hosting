@@ -4,18 +4,19 @@ Google Cloud offers $300 worth of free credits for 90 days when you sign up with
 
 # Install Java
 
-By default the VM should be empty so you'll need to install Java yourself. Minecraft 1.21 requires JDK 20 or later, which is not available on apt, so an easy way is to install via Azul.
+By default the VM should be empty so you'll need to install Java yourself. Minecraft 1.21 requires JDK 20 or later.
 
 The great thing about Google Cloud is that you can connect via SSH with a single click from the browser, which is much easier than using the command line.
 
 You can also upload and download files directly to/from your computer as well, which eliminates the need for `scp`.
 
-Install the debian JDK 20 package from Azul and install it onto your VM.
+Install the latest version of JDK from https://www.oracle.com/java/technologies/javase/jdk22-archive-downloads.html onto your VM.
 ```
-$ wget https://www.azul.com/core-post-download/?endpoint=zulu&uuid=189be6cc-5ad5-4926-97ca-470b401f151c
-$ sudo apt install ./zulu22.32.15-ca-jdk22.0.2-linux_amd64.deb
+wget https://download.oracle.com/java/22/archive/jdk-22.0.1_linux-x64_bin.deb
+sudo apt install ./jdk-22.0.1_linux-x64_bin.deb
 ```
 Confirm that Java is installed successfully with ``` java -version ```
+![image](https://github.com/user-attachments/assets/a6159980-dc75-4dde-9eac-3655996eb371)
 
 # Install the Minecraft Server .jar file
 
