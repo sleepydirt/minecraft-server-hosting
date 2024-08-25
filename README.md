@@ -16,6 +16,7 @@ wget https://download.oracle.com/java/22/archive/jdk-22.0.1_linux-x64_bin.deb
 sudo apt install ./jdk-22.0.1_linux-x64_bin.deb
 ```
 Confirm that Java is installed successfully with ``` java -version ```
+
 ![image](https://github.com/user-attachments/assets/a6159980-dc75-4dde-9eac-3655996eb371)
 
 # Install the Minecraft Server .jar file
