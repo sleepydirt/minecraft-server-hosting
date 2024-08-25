@@ -24,18 +24,18 @@ Confirm that Java is installed successfully with ``` java -version ```
 For earlier/later Minecraft versions, you can find the server.jar file online, copy the link and download it into the VM.
 For Minecraft 1.21, run:
 ```
-$ wget https://piston-data.mojang.com/v1/objects/450698d1863ab5180c25d7c804ef0fe6369dd1ba/server.jar
+wget https://piston-data.mojang.com/v1/objects/450698d1863ab5180c25d7c804ef0fe6369dd1ba/server.jar
 ```
 
 After the install, you can run the server
 
 ```
-$ java -Xmx1024M -Xms1024M -jar server.jar nogui
+java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
 
 Remember to accept the EULA.
 ```
-$ nano eula.txt
+nano eula.txt
 ```
 
 # Uploading Files to the VM
@@ -44,7 +44,7 @@ Now, if you have your own Minecraft world previously that you want to run as a m
 
 Simply locate the directory where your Minecraft world folder is located and delete it first:
 ```
-$ rm world
+rm world
 ```
 
 Locate your Minecraft ``` world ``` folder on your local machine and take note of its file path. 
@@ -56,7 +56,7 @@ With Google Cloud Platform, you are able to drag and drop files directly into yo
 # If you are using another provider
 Upload your ``` world ``` folder onto your VM via the command line:
 ```
-$ scp -r /world root@xx.xx.xx.x:/directory
+scp -r /world root@xx.xx.xx.x:/directory
 ```
 Using the ``` -r ``` argument will cause the command to recursively copy the entire directory and all its files into your VM. Note that your ip address is specific to your VM and directory represents the target directory that your world folder is located in. Enter your password and the transfer should begin. 
 
@@ -66,19 +66,19 @@ Your server will stop once you close the Terminal window. To keep your server ru
 
 You can install screen with
 ```
-$ sudo apt-get install screen
+sudo apt-get install screen
 ```
 
 First, create a new Screen named Minecraft and run your server.jar file within it. You can specify the amount of RAM to be allocated to the server, which is typically ~80% of your VM's total memory.
 
 ``` 
-$ screen -mdS minecraft java -Xms2G -Xmx2G -jar server.jar
+screen -mdS minecraft java -Xms2G -Xmx2G -jar server.jar
 ```
 
 To detach from your screen, press ```Ctrl+A``` + ```D```, and to reopen your screen do
 
 ```
-$ screen -x minecraft
+screen -x minecraft
 ```
 
 # Running a Modded Server on the VM
