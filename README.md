@@ -38,7 +38,7 @@ $ nano eula.txt
 
 # Uploading Files to the VM
 
-Now, if you have your own Minecraft world previously that you want to run as a multiplayer server now, you can do so by uploading your own world file into the VM.
+Now, if you have your own Minecraft world previously that you want to run as a multiplayer server, you can do so by uploading your own world file into the VM.
 
 Simply locate the directory where your Minecraft world folder is located and delete it first:
 ```
@@ -49,6 +49,8 @@ Locate your Minecraft ``` world ``` folder on your local machine and take note o
 
 With Google Cloud Platform, you are able to drag and drop files directly into your VM. Simply upload your entire ```world``` folder into the VM and move it to the directory as the Minecraft server installation.
 
+![image](https://github.com/user-attachments/assets/1825a590-adb4-45e8-b774-e49fbcf91bcc)
+
 # If you are using another provider
 Upload your ``` world ``` folder onto your VM via the command line:
 ```
@@ -56,11 +58,16 @@ $ scp -r /world root@xx.xx.xx.x:/directory
 ```
 Using the ``` -r ``` argument will cause the command to recursively copy the entire directory and all its files into your VM. Note that your ip address is specific to your VM and directory represents the target directory that your world folder is located in. Enter your password and the transfer should begin. 
 
-#Keeping your server running 24/7
+# Keeping your server running 24/7
 
-Your server will most likely stop once you close the Terminal window. To keep your server running 24/7, we can use ``` Screen ```.
+Your server will stop once you close the Terminal window. To keep your server running 24/7, we can use ``` Screen ```.
 
-First, create a new Screen named Minecraft and run your server.jar file within it.
+You can install screen with
+```
+$ sudo apt-get install screen
+```
+
+First, create a new Screen named Minecraft and run your server.jar file within it. You can specify the amount of RAM to be allocated to the server, which is typically ~80% of your VM's total memory.
 
 ``` 
 $ screen -mdS minecraft java -Xms2G -Xmx2G -jar server.jar
@@ -84,4 +91,6 @@ You can also use pre-configured server packs from ```CurseForge``` that will be 
 # Copying your Minecraft world from the VM
 After you had enough fun playing multiplayer, you can continue your progress on your local machine by copying the ``` world ``` folder back onto your local machine.
 
-Navigate to your ``` .minecraft\saves\ ``` folder and copy the folder path. Copy your files using ``` scp ``` and continue playing on singleplayer.
+With Google Cloud, you can simply click `Download File`, and enter the ```world``` file path. 
+
+Else, navigate to your ``` .minecraft\saves\ ``` folder and copy the folder path. Copy your files using ``` scp ``` and continue playing on singleplayer.
