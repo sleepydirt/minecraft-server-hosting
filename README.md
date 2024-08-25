@@ -1,16 +1,16 @@
-This is a short guide for myself (and anyone else) on how to host your own free Minecraft server with the help of Google Cloud Compute Engine.
+This is a short guide for myself (and anyone else) on how to host your own free Minecraft server with the help of Google Cloud Platform.
 
-Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM (since you have $100 free a month)
+Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM (since you have $100 free a month). This only lasts for 3 months, so you will have to make a new Google account and port your world over in order to continue.
 
 # Install Java
 
-By default the VM should be empty so you'll need to install Java yourself. For some reason Minecraft 1.21 requires JDK 20 or later, which is not available on apt, so you have to install via Azul.
+By default the VM should be empty so you'll need to install Java yourself. Minecraft 1.21 requires JDK 20 or later, which is not available on apt, so an easy way is to install via Azul.
 
-The great thing about Google Cloud is that you can connect via SSH with a single click from the browser. (no more losing your private keys)
+The great thing about Google Cloud is that you can connect via SSH with a single click from the browser, which is much easier than using the command line.
 
-You can also upload and download files directly to/from your computer as well. (no need scp)
+You can also upload and download files directly to/from your computer as well, which eliminates the need for `scp`.
 
-Since we are running a Debian VM, install the .deb file JDK on your own computer from https://www.azul.com/core-post-download/ and upload it onto the VM.
+Install the debian JDK 20 package from Azul and install it onto your VM.
 ```
 $ wget https://www.azul.com/core-post-download/?endpoint=zulu&uuid=189be6cc-5ad5-4926-97ca-470b401f151c
 $ sudo apt install ./zulu22.32.15-ca-jdk22.0.2-linux_amd64.deb
@@ -19,12 +19,13 @@ Confirm that Java is installed successfully with ``` java -version ```
 
 # Install the Minecraft Server .jar file
 
-You can find the server.jar file online, copy the link and download it into the VM, it should look something like:
+For earlier/later Minecraft versions, you can find the server.jar file online, copy the link and download it into the VM.
+For Minecraft 1.21, run:
 ```
 $ wget https://piston-data.mojang.com/v1/objects/450698d1863ab5180c25d7c804ef0fe6369dd1ba/server.jar
 ```
 
-After the install, you can try running the server
+After the install, you can run the server
 
 ```
 $ java -Xmx1024M -Xms1024M -jar server.jar nogui
@@ -45,6 +46,10 @@ $ rm world
 ```
 
 Locate your Minecraft ``` world ``` folder on your local machine and take note of its file path. 
+
+With Google Cloud Platform, you are able to drag and drop files directly into your VM. Simply upload your entire ```world``` folder into the VM and move it to the directory as the Minecraft server installation.
+
+# If you are using another provider
 Upload your ``` world ``` folder onto your VM via the command line:
 ```
 $ scp -r /world root@xx.xx.xx.x:/directory
