@@ -1,6 +1,26 @@
-This is a short guide for myself (and anyone else) on how to host your own free Minecraft server with the help of Google Cloud Platform.
+This is a short guide for myself (and anyone else) on how to host your own free Minecraft server with the help of Google Cloud Platform (or any other virtual machine, really).
 
-Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM (since you have $100 free a month). This only lasts for 3 months, so you will have to make a new Google account and port your world over in order to continue.
+Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM. This only lasts for 3 months, so you will have to make a new Google account and port your world over in order to continue.
+
+# Setup
+For a simple Minecraft 1.21 server, you can run `setup.sh` to quickly set up a Vanliia server.
+
+## 1. Clone the repository
+```
+git clone https://github.com/sleepydirt/minecraft-server-hosting.git
+cd minecraft-server-hosting
+```
+
+## 2. Run the setup script
+```
+sudo ./setup.sh
+```
+
+## 3. Start the server
+By default, a new directory `minecraft` is created under the directory that the script is run in.
+```
+cd ./minecraft && java -Xmx1024M -Xms1024M -jar server.jar nogui
+```
 
 # Install Java
 
