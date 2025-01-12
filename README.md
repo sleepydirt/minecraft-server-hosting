@@ -2,7 +2,7 @@ This is a short guide for myself (and anyone else) on how to host your own free 
 
 Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM. This only lasts for 3 months, so you will have to make a new Google account and port your world over in order to continue.
 
-# Setup
+# Quick Setup
 For a simple Minecraft 1.21 server, you can run `setup.sh` to quickly set up a Vanliia server.
 
 ## 1. Clone the repository
@@ -22,7 +22,8 @@ By default, a new directory `minecraft` is created under the directory that the 
 cd ./minecraft && java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
 
-# Install Java
+# Manual Setup
+## Install Java
 
 By default the VM should be empty so you'll need to install Java yourself. Minecraft 1.21 requires JDK 20 or later.
 
@@ -35,11 +36,12 @@ Install the latest version of JDK from https://www.oracle.com/java/technologies/
 wget https://download.oracle.com/java/22/archive/jdk-22.0.1_linux-x64_bin.deb
 sudo apt install ./jdk-22.0.1_linux-x64_bin.deb
 ```
+Note that if you are using a Red Hat based distro, you will need to use `yum` instead of `apt`.
 Confirm that Java is installed successfully with ``` java -version ```
 
 ![image](https://github.com/user-attachments/assets/a6159980-dc75-4dde-9eac-3655996eb371)
 
-# Install the Minecraft Server .jar file
+## Install the Minecraft Server .jar file
 
 For earlier/later Minecraft versions, you can find the server.jar file online, copy the link and download it into the VM.
 For Minecraft 1.21, run:
@@ -58,7 +60,7 @@ Remember to accept the EULA.
 nano eula.txt
 ```
 
-# Uploading Files to the VM
+## Uploading Files to the VM
 
 Now, if you have your own Minecraft world previously that you want to run as a multiplayer server, you can do so by uploading your own world file into the VM.
 
@@ -73,7 +75,7 @@ With Google Cloud Platform, you are able to drag and drop files directly into yo
 
 ![image](https://github.com/user-attachments/assets/1825a590-adb4-45e8-b774-e49fbcf91bcc)
 
-# If you are using another provider
+## If you are using another provider
 Upload your ``` world ``` folder onto your VM via the command line:
 ```
 scp -r /world root@xx.xx.xx.x:/directory
