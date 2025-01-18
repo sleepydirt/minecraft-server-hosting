@@ -1,9 +1,22 @@
-This is a short guide for myself (and anyone else) on how to host your own free Minecraft server with the help of Google Cloud Platform (or any other virtual machine, really).
+This is a short guide on how to host your own free multiplayer Minecraft server locally or online with any cloud provider.
 
-Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM. This only lasts for 3 months, so you will have to make a new Google account and port your world over in order to continue.
+In this short document, I will be using Google Cloud.
+
+Google Cloud offers $300 worth of free credits for 90 days when you sign up with your Google account. A simple Vanilla server will cost about $20 a month to run, so you can run quite large/modded servers by configuring a more powerful VM.
 
 # Quick Setup
-For a simple Minecraft 1.21 server, you can run `setup.sh` to quickly set up a Vanliia server.
+For a simple Minecraft 1.21 server, you can run `setup.sh` to quickly set up a Vanliia server. If you are using Google Cloud's Compute Engine or AWS EC2 instances, make sure to connect to your VM first via SSH. If you are running locally, you may skip this part.
+
+## 0. Connecting via SSH
+
+To connect to your virtual machine, you will need to use a SSH key. This is usually generated once during the creation of your VM. Store it in a secure location, usually in a `.ssh` folder located in your home directory ie. `~/.ssh`
+
+Connect via OpenSSH through your terminal:
+```
+ssh -i ~/.ssh/my-ssh-key <username>@<ip-address>
+```
+
+While it is recommended to connect via the terminal, you can also connect via the console, which will generate a popup window. See https://cloud.google.com/compute/docs/instances/ssh for more information.
 
 ## 1. Clone the repository
 ```
@@ -78,9 +91,9 @@ With Google Cloud Platform, you are able to drag and drop files directly into yo
 ## If you are using another provider
 Upload your ``` world ``` folder onto your VM via the command line:
 ```
-scp -r /world root@xx.xx.xx.x:/directory
+scp -i ~/.ssh/my-ssh-key -r /world root@xx.xx.xx.x:/directory
 ```
-Using the ``` -r ``` argument will cause the command to recursively copy the entire directory and all its files into your VM. Note that your ip address is specific to your VM and directory represents the target directory that your world folder is located in. Enter your password and the transfer should begin. 
+Using the ``` -r ``` argument will cause the command to recursively copy the entire directory and all its files into your VM. Note that your ip address is specific to your VM and directory represents the target directory that your world folder is located in. Enter your password and the transfer should begin. Additionally, you may need to specify your SSH private key to be able to connect to your VM.
 
 # Keeping your server running 24/7
 
@@ -106,7 +119,7 @@ screen -x minecraft
 # Running a Modded Server on the VM
 The features that GCP provides for free is overkill for a simple vanilla Minecraft server. As such, you may want to have mods in your multiplayer server.
 
-Using either a fabric/forge .jar launcher, upload the server jar file into your VM with the same method mentioned above. Run the server once such that the ``` mods ``` folder is generated.
+Using either a fabric/forge .jar launcher, replace the `server.jar` file with a Forge/Fabric launcher. Run the server once to generate the ``` mods ``` folder.
 
 Upload whatever .jar files your mod(s) require into the ``` mods ``` folder onto your VM.
 
